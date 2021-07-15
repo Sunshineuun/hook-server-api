@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--
+    context:生成一组对象的环境
+    id:必选，上下文id，用于在生成错误时提示
+    defaultModelType:指定生成对象的样式
+        1，conditional：类似hierarchical；
+        2，flat：所有内容（主键，blob）等全部生成在一个对象中；
+        3，hierarchical：主键生成一个XXKey对象(key class)，Blob等单独生成一个对象，其他简单属性在一个对象中(record class)
+    targetRuntime:
+        1，MyBatis3：默认的值，生成基于MyBatis3.x以上版本的内容，包括XXXBySample；
+        2，MyBatis3Simple：类似MyBatis3，只是不生成XXXBySample；
+    introspectedColumnImpl：类全限定名，用于扩展MBG
+    -->
+    <context id="Mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3Simple">
+
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 生成的model实现Serializable借口
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+            <property name="suppressJavaInterface" value="false"/>
+        </plugin>
+        -->
+        <!-- 自动生成equals方法和hashcode方法
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        -->
+        <!-- 该插件给实体类添加toString()
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        -->
+        <plugin type="com.eju.houseparent.mybaitspagehelper.plugin.GenPlugin">
+            <property name="author" value="linxi"/>
+            <property name="version" value="v1.0.0"/>
+            <property name="lombok" value="true"/>
+            <property name="swagger" value="true"/>
+            <property name="serial" value="false"/>
+            <property name="replacePrefix" value="tb_"/>
+            <property name="overrideMapperAndService" value="false"/>
+            <property name="serviceTargetPackage" value="com.eju.hookserver.service.business"/>
+            <property name="serviceTargetProject" value="service/src/main/java"/>
+            <property name="serviceImplementationPackage" value="com.eju.hookserver.service.business.impl"/>
+        </plugin>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.122.139.14:3306/tmall_fang?useSSL=false"
+                        userId="datatech"
+                        password="O8dr2ENyRd^7v*&amp;z"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成实体类地址 -->
+        <javaModelGenerator targetPackage="com.eju.hookserver.mapper.table"
+                            targetProject="mapping/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.eju.houseparent.common.model.mybaits.BaseEntity"/>
+        </javaModelGenerator>
+
+        <!--生成mapper.xml文件-->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="mapping/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--生成mappper文件-->
+        <javaClientGenerator targetPackage="com.eju.hookserver.mapper.dao"
+                             targetProject="mapping/src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+            <property name="rootInterface" value="com.eju.houseparent.mybaitspagehelper.plugin.mapper.BaseMapper"/>
+        </javaClientGenerator>
+
+
+        <!-- 配置表信息 -->
+        <!--下面你可以重复添加对应多个表-->
+        <!--后面选项：是否生成 example类 -->
+
+<!--        <table tableName="esf_upperalower_info"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="false"-->
+<!--               enableUpdateByPrimaryKey="false"-->
+<!--               enableDeleteByPrimaryKey="false">-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
+
+
+<!--        <table tableName="esf_community"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="false"-->
+<!--               enableUpdateByPrimaryKey="false"-->
+<!--               enableDeleteByPrimaryKey="false">-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
+        <!--        <table tableName="esf_community_price"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+        <!--        <table tableName="esf_layout_base_info"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+        <!--        <table tableName="esf_picture_info"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+                        <table tableName="esf_community"
+                               enableCountByExample="false"
+                               enableUpdateByExample="false"
+                               enableDeleteByExample="false"
+                               enableSelectByExample="false"
+                               selectByExampleQueryId="false"
+                               enableSelectByPrimaryKey="false"
+                               enableUpdateByPrimaryKey="false"
+                               enableDeleteByPrimaryKey="false">
+                            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+                        </table>
+<!--        <table tableName="esf_community_price"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="false"-->
+<!--               enableUpdateByPrimaryKey="false"-->
+<!--               enableDeleteByPrimaryKey="false">-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="esf_layout_base_info"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="false"-->
+<!--               enableUpdateByPrimaryKey="false"-->
+<!--               enableDeleteByPrimaryKey="false">-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
+<!--        <table tableName="esf_picture_info"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="false"-->
+<!--               enableUpdateByPrimaryKey="false"-->
+<!--               enableDeleteByPrimaryKey="false">-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
+
+        <!--                <table tableName="xf_base_info"-->
+        <!--                       enableCountByExample="false"-->
+        <!--                       enableUpdateByExample="false"-->
+        <!--                       enableDeleteByExample="false"-->
+        <!--                       enableSelectByExample="false"-->
+        <!--                       selectByExampleQueryId="false"-->
+        <!--                       enableSelectByPrimaryKey="false"-->
+        <!--                       enableUpdateByPrimaryKey="false"-->
+        <!--                       enableDeleteByPrimaryKey="false">-->
+        <!--                    <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--                </table>-->
+<!--                <table tableName="xf_picture_info"-->
+<!--                       enableCountByExample="false"-->
+<!--                       enableUpdateByExample="false"-->
+<!--                       enableDeleteByExample="false"-->
+<!--                       enableSelectByExample="false"-->
+<!--                       selectByExampleQueryId="false"-->
+<!--                       enableSelectByPrimaryKey="false"-->
+<!--                       enableUpdateByPrimaryKey="false"-->
+<!--                       enableDeleteByPrimaryKey="false">-->
+<!--                    <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--                </table>-->
+
+        <!--                <table tableName="xinfang_upperalower_info"-->
+        <!--                       enableCountByExample="false"-->
+        <!--                       enableUpdateByExample="false"-->
+        <!--                       enableDeleteByExample="false"-->
+        <!--                       enableSelectByExample="false"-->
+        <!--                       selectByExampleQueryId="false"-->
+        <!--                       enableSelectByPrimaryKey="false"-->
+        <!--                       enableUpdateByPrimaryKey="false"-->
+        <!--                       enableDeleteByPrimaryKey="false">-->
+        <!--                    <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--                </table>-->
+
+
+        <!--        <table tableName="xf_pre_sale_info"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        <table tableName="xf_picture_info"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        <table tableName="region"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        <table tableName="plate"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        <table tableName="metro_station"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        <table tableName="metro_station_gate"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        <table tableName="loopline"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+
+
+        <!--        <table tableName="layout_base_info"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+
+
+        <!--        <table tableName="label_info"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        <table tableName="temp"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+        <!--        <table tableName="tb_task"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--        </table>-->
+
+
+<!--        <table tableName="tb_task_instance"-->
+<!--               enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"-->
+<!--               enableSelectByPrimaryKey="false"-->
+<!--               enableUpdateByPrimaryKey="false"-->
+<!--               enableDeleteByPrimaryKey="false">-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
+
+        <!--        <table tableName="tb_task_error"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true" />-->
+        <!--        </table>-->
+
+        <!--        <table tableName="tb_interface_info"-->
+        <!--               enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               selectByExampleQueryId="false"-->
+        <!--               enableSelectByPrimaryKey="false"-->
+        <!--               enableUpdateByPrimaryKey="false"-->
+        <!--               enableDeleteByPrimaryKey="false">-->
+        <!--            <generatedKey column="id" sqlStatement="Mysql" identity="true" />-->
+        <!--        </table>-->
+
+    </context>
+</generatorConfiguration>

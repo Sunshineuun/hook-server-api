@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: @spring.profiles.active@
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
+      exclude: WEB-INF/**
+info:
+  build:
+    name: @project.name@
+    description: @project.description@
+    groupId: @project.groupId@
+    artifact: @project.artifactId@
+    version: @project.version@
+app:
+  id: 60dacbf0f194fa3f3940fe48
+apollo:
+  cluster: default
+  meta: @spring.profiles.value@
+  cacheDir: /opt/app/data
+  bootstrap:
+    enabled: true
+    eagerLoad:
+      enabled: true
+    namespaces: application,fang.parent.cloud,fang.parent.pagehelp,fang.parent.mysql-config,fang.parent.redis-config

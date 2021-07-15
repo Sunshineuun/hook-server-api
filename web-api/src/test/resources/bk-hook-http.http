@@ -1,0 +1,35 @@
+
+# 获取图片验证码
+http://localhost:8930/inner/bk/login/get/picVerifyCodeByPhone?phoneNo=15958624595
+
+###
+# 获取短信验证码
+http://localhost:8930/inner/bk/login/get/phoneVerifyCodeByPhone?phoneNo=15958624595&picVerifyCode=2066
+
+###
+# 短信登录
+http://localhost:8930/inner/bk/login/loginByVerifyCode?phoneNo=15958624595&picVerifyCode=1055&verifyCode=465410
+
+###
+# 密码登录
+http://localhost:8930/inner/bk/login/loginByPasswordV2?phoneNo=15958624595&picVerifyCode=4077&password=qweasdzxc456
+
+###
+# 获取用户信息
+http://localhost:8930/inner/bk/login/get/user/
+
+###
+# 查询小区
+http://localhost:8930/inner/bk/skeleton/community?key=大宁&cityId=310000
+
+###
+# 查询楼栋
+http://localhost:8930/inner/bk/skeleton/building?communityId=5011000010670&cityId=310000
+
+###
+# 查询单元
+http://localhost:8930/inner/bk/skeleton/unit?buildingId=5016612386443258&cityId=310000
+
+###
+# 查询房号
+http://localhost:8930/inner/bk/skeleton/house?unitId=5016822769847747&cityId=310000
